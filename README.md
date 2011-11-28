@@ -4,6 +4,8 @@ A little browser based BDD Dojo app with exercises aimed at teaching how to writ
 
 This project is aimed at reducing the barrier to entry of learning how to write tests.
 
+Check it out: http://coder.heroku.com/
+
 Usage
 -----
 ```shell
@@ -28,7 +30,6 @@ Needs:
 * An index of lessons for populating navigation.
 * Perhaps a vt100 code parse to get colored output (nice to have).
 * Save changes...only looking at browser storage now.
-* Deployment environment.
 
 What You Can Do!
 ----------------
