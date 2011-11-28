@@ -1,0 +1,72 @@
+body {
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+#src { 
+  margin: 0;
+  position: absolute;
+  top: 50px;
+  bottom: 25%;
+  left: 50%;
+  right: 0;
+}
+
+#spec {
+  margin: 0;
+  position: absolute;
+  top: 50px;
+  bottom: 0%;
+  left: 0;
+  right: 50%;
+}
+
+#out {
+  margin: 0;
+  position: absolute;
+  top: 75%;
+  bottom: 0;
+  left: 50%;
+  right: 0;
+  overflow: scroll;
+}
+
+#runner { display: none; }
+
+.buttons {
+  margin: 0;
+  padding: 0;
+}
+
+.buttons li {
+  display: inline-block;
+  width: 50px;
+  line-height: 50px;
+  text-align: center;
+}
+
+.buttons > * {
+  margin: 0;
+  padding: 0;
+  display: inline-block;
+}
+
+.buttons a {
+  display: block;
+}
+
+#lessons {
+  float: left;
+  margin: 0 10px 0 40px;
+}
+
+#actions {
+  margin: 0 10px 0 10px;
+  float: right;
+}
+
+.panel {
+  border: 3px solid white;
+}
+
