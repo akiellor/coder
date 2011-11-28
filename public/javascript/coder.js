@@ -34,13 +34,19 @@ $(function(){
   });
 
 
-  $("#lessons a").click(function(){
+  function showLesson(number){
     $.when(
-      $.ajax({cache: false, url: '/public/lessons/' + $(this).text() + '-src.js', dataType: "text"}),
-      $.ajax({cache: false, url: '/public/lessons/' + $(this).text() + '-spec.js', dataType: "text"})
+      $.ajax({cache: false, url: '/public/lessons/' + number + '-src.js', dataType: "text"}),
+      $.ajax({cache: false, url: '/public/lessons/' + number + '-spec.js', dataType: "text"})
     ).done(function(srcContent, specContent){
         src.getSession().setValue(srcContent[0]);
         spec.getSession().setValue(specContent[0]);
     }).fail(function(e){ console.log(this) });
+  }
+
+  $("#lessons a").click(function(){
+    showLesson($(this).text());
   });
+
+  showLesson(1);
 });
