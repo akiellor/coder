@@ -36,8 +36,8 @@ $(function(){
 
   $("#lessons a").click(function(){
     $.when(
-      $.ajax({cache: false, url: '/lessons/' + $(this).text() + '-src.js', dataType: "text"}),
-      $.ajax({cache: false, url: '/lessons/' + $(this).text() + '-spec.js', dataType: "text"})
+      $.ajax({cache: false, url: '/public/lessons/' + $(this).text() + '-src.js', dataType: "text"}),
+      $.ajax({cache: false, url: '/public/lessons/' + $(this).text() + '-spec.js', dataType: "text"})
     ).done(function(srcContent, specContent){
         src.getSession().setValue(srcContent[0]);
         spec.getSession().setValue(specContent[0]);
