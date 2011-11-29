@@ -1,7 +1,5 @@
 var src, spec, out;
 
-$.idleTimer(1000);
-
 $(function(){
   var JavaScriptMode = require("ace/mode/javascript").Mode;
   
@@ -24,7 +22,7 @@ $(function(){
   out.renderer.setShowGutter(false);
   out.renderer.hideCursor(true);
 
-  $(document).bind("idle.idleTimer", function(){
+  function run(){
     $("#runner").remove();
     out.getSession().setValue("");
 
@@ -33,7 +31,22 @@ $(function(){
         out.getSession().setValue(out.getSession().getValue() + msg);
       });
     }).appendTo(document.body);
-  });
+  }
+
+  var scheduledRuns = [];
+
+  setInterval(function(){
+    var r = scheduledRuns.pop();
+    r && r();
+  }, 1000);
+
+  function delayedRun(){
+    scheduledRuns = [];
+    scheduledRuns[scheduledRuns.length] = run;
+  }
+
+  spec.getSession().addEventListener("change", delayedRun);
+  src.getSession().addEventListener("change", delayedRun);
 
   function showLesson(number){
     $.when(
