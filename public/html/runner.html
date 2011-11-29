@@ -4,10 +4,15 @@
     <script src="/public/javascript/jasmine.js" type="text/javascript"></script>
     <script src="/public/javascript/ConsoleReporter.js" type="text/javascript"></script>
     <script text="text/javascript">
-      function run(src, test, fn){
-        eval(src);
-        eval(test);
-        jasmine.getEnv().addReporter(new jasmine.ConsoleReporter(fn, function(){}, false));
+      function run(src, test, print){
+        function println(msg){
+          print(msg + "\n");
+        }
+
+        try { eval(src); }catch(e){ println(e); return; }
+        try { eval(test); } catch(e) { println(e); return; }
+        
+        jasmine.getEnv().addReporter(new jasmine.ConsoleReporter(print, function(){}, false));
         jasmine.getEnv().execute();
       }
     </script>
