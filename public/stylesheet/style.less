@@ -2,24 +2,29 @@ body {
   overflow: hidden;
   margin: 0;
   padding: 0;
+
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 #src { 
   margin: 0;
   position: absolute;
-  top: 50px;
+  top: 0;
   bottom: 25%;
   left: 50%;
   right: 0;
+  border-top: 5px solid #E8E8E8;
+  border-right: 5px solid #E8E8E8;
 }
 
 #spec {
   margin: 0;
   position: absolute;
-  top: 50px;
+  top: 0;
   bottom: 25%;
   left: 0;
   right: 50%;
+  border-top: 5px solid #E8E8E8;
 }
 
 #out {
@@ -30,40 +35,8 @@ body {
   left: 0;
   right: 0;
   overflow: scroll;
-  border-top: 5px solid white;
+  border: 5px solid #E8E8E8;
 }
 
 #runner { display: none; }
-
-.buttons {
-  margin: 0;
-  padding: 0;
-
-  li {
-    display: inline-block;
-    width: 50px;
-    line-height: 50px;
-    text-align: center;
-  }
-
-  > * {
-    margin: 0;
-    padding: 0;
-    display: inline-block;
-  }
-
-  a {
-    display: block;
-  }
-}
-
-#lessons {
-  float: left;
-  margin: 0 10px 0 40px;
-}
-
-#actions {
-  margin: 0 10px 0 10px;
-  float: right;
-}
 

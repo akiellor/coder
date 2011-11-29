@@ -1,5 +1,7 @@
 var src, spec, out;
 
+$.idleTimer(1000);
+
 $(function(){
   var JavaScriptMode = require("ace/mode/javascript").Mode;
   
@@ -22,7 +24,7 @@ $(function(){
   out.renderer.setShowGutter(false);
   out.renderer.hideCursor(true);
 
-  $("#run").click(function(){
+  $(document).bind("idle.idleTimer", function(){
     $("#runner").remove();
     out.getSession().setValue("");
 
@@ -32,7 +34,6 @@ $(function(){
       });
     }).appendTo(document.body);
   });
-
 
   function showLesson(number){
     $.when(
@@ -48,5 +49,5 @@ $(function(){
     showLesson($(this).text());
   });
 
-  showLesson(1);
+  showLesson(window.location.hash.substring(1));
 });
