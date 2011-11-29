@@ -23,17 +23,18 @@ datasources.lessons = function(){
 
   return {
     index: function(callback){
-      $.ajax({cache: false, url: '/public/lessons/index.json', dataType: "json"}).done(callback);
+      return $.ajax({cache: false, url: '/public/lessons/index.json', dataType: "json"}).done(callback);
     },
     get: function(number, callback){
       if(!!getLessons()[+number]){
         callback(getLessons()[+number]);
       }else{
         $.when(
+          this.index(),
           $.ajax({cache: false, url: '/public/lessons/' + number + '-src.js', dataType: "text"}),
           $.ajax({cache: false, url: '/public/lessons/' + number + '-spec.js', dataType: "text"})
-          ).done(function(srcContent, specContent){
-            setLesson(+number, {src: srcContent[0], spec: specContent[0]});
+        ).done(function(index, srcContent, specContent){
+            setLesson(+number, {src: srcContent[0], spec: specContent[0], id: index[0][number - 1].id, name: index[0][number - 1].name});
             callback(getLessons()[+number]);
         }).fail(function(e){ console.log(this) });
       }
