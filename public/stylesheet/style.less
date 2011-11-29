@@ -17,7 +17,7 @@ body {
   margin: 0;
   position: absolute;
   top: 50px;
-  bottom: 0%;
+  bottom: 25%;
   left: 0;
   right: 50%;
 }
@@ -27,9 +27,10 @@ body {
   position: absolute;
   top: 75%;
   bottom: 0;
-  left: 50%;
+  left: 0;
   right: 0;
   overflow: scroll;
+  border-top: 5px solid white;
 }
 
 #runner { display: none; }
@@ -37,23 +38,23 @@ body {
 .buttons {
   margin: 0;
   padding: 0;
-}
 
-.buttons li {
-  display: inline-block;
-  width: 50px;
-  line-height: 50px;
-  text-align: center;
-}
+  li {
+    display: inline-block;
+    width: 50px;
+    line-height: 50px;
+    text-align: center;
+  }
 
-.buttons > * {
-  margin: 0;
-  padding: 0;
-  display: inline-block;
-}
+  > * {
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+  }
 
-.buttons a {
-  display: block;
+  a {
+    display: block;
+  }
 }
 
 #lessons {
@@ -64,9 +65,5 @@ body {
 #actions {
   margin: 0 10px 0 10px;
   float: right;
-}
-
-.panel {
-  border: 3px solid white;
 }
 
