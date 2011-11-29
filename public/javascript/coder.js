@@ -58,9 +58,5 @@ $(function(){
     }).fail(function(e){ console.log(this) });
   }
 
-  $("#lessons a").click(function(){
-    showLesson($(this).text());
-  });
-
   showLesson(window.location.hash.substring(1));
 });
