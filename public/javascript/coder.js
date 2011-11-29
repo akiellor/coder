@@ -46,17 +46,25 @@ $(function(){
   }
 
   spec.getSession().addEventListener("change", delayedRun);
+  
+  spec.getSession().addEventListener("change", function(){
+    datasources.lessons().update(window.location.hash.substring(1), function(lesson){
+      lesson.spec = spec.getSession().getValue();
+      return lesson;
+    });
+  });
+  
   src.getSession().addEventListener("change", delayedRun);
 
-  function showLesson(number){
-    $.when(
-      $.ajax({cache: false, url: '/public/lessons/' + number + '-src.js', dataType: "text"}),
-      $.ajax({cache: false, url: '/public/lessons/' + number + '-spec.js', dataType: "text"})
-    ).done(function(srcContent, specContent){
-        src.getSession().setValue(srcContent[0]);
-        spec.getSession().setValue(specContent[0]);
-    }).fail(function(e){ console.log(this) });
-  }
+  src.getSession().addEventListener("change", function(){
+    datasources.lessons().update(window.location.hash.substring(1), function(lesson){
+      lesson.src = src.getSession().getValue();
+      return lesson;
+    });
+  });
 
-  showLesson(window.location.hash.substring(1));
+  datasources.lessons().get(window.location.hash.substring(1), function(lesson){
+    src.getSession().setValue(lesson.src);
+    spec.getSession().setValue(lesson.spec);
+  });
 });
