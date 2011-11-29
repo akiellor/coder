@@ -22,17 +22,6 @@ $(function(){
   out.renderer.setShowGutter(false);
   out.renderer.hideCursor(true);
 
-  function run(){
-    $("#runner").remove();
-    out.getSession().setValue("");
-
-    var sandbox = $('<iframe />', {id: "runner", src: "runner.html"}).bind('load', function(){ 
-      this.contentWindow.run(src.getSession().getValue(), spec.getSession().getValue(), function(msg){
-        out.getSession().setValue(out.getSession().getValue() + msg);
-      });
-    }).appendTo(document.body);
-  }
-
   var scheduledRuns = [];
 
   setInterval(function(){
@@ -42,7 +31,14 @@ $(function(){
 
   function delayedRun(){
     scheduledRuns = [];
-    scheduledRuns[scheduledRuns.length] = run;
+    scheduledRuns[scheduledRuns.length] = function(){
+      function print(msg){
+        out.getSession().setValue(out.getSession().getValue() + msg);
+      }
+ 
+      out.getSession().setValue("");
+      jasmine.iframeRunner(print, "runner").run([src.getSession().getValue(), spec.getSession().getValue()]);
+    }
   }
 
   spec.getSession().addEventListener("change", delayedRun);
