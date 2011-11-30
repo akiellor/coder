@@ -35,6 +35,6 @@ The most important part of this project is the content, I welcome pull requests 
 
 Sources
 -------
-[https://sites.google.com/site/tddproblems/][TDD Problems]
-[http://projecteuler.net/][Project Euler]
+[TDD Problems][https://sites.google.com/site/tddproblems/]
+[Project Euler][http://projecteuler.net/]
 
