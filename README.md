@@ -27,11 +27,14 @@ Basics are there:
 Needs:
 
 * More content.
-* An index of lessons for populating navigation.
 * Perhaps a vt100 code parse to get colored output (nice to have).
-* Save changes...only looking at browser storage now.
 
 What You Can Do!
 ----------------
 The most important part of this project is the content, I welcome pull requests with any content (include attribution).
+
+Sources
+-------
+https://sites.google.com/site/tddproblems/
+http://projecteuler.net/
 
